@@ -5,7 +5,7 @@ import time
 from xml.etree import ElementTree
 
 import requests
-from plexapi import (BASE_HEADERS, CONFIG, TIMEOUT, X_PLEX_ENABLE_FAST_CONNECT,
+from plexapi import (CONFIG, TIMEOUT, X_PLEX_ENABLE_FAST_CONNECT,
                      log, logfilter, utils, reset_base_headers)
 from plexapi.base import PlexObject
 from plexapi.client import PlexClient
