@@ -597,7 +597,7 @@ class MyPlexAccount(PlexObject):
                 :exc:`~plexapi.exceptions.BadRequest`: Provided client doesn`t provides `sync-target`.
         """
         if not client and not clientId:
-            clientId = X_PLEX_IDENTIFIER
+            clientId = CONFIG.get('header.identifier')
 
         if not client:
             for device in self.devices():
