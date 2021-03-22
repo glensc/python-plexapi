@@ -3,8 +3,8 @@ from urllib.parse import urlencode
 from xml.etree import ElementTree
 
 import requests
-from plexapi import (BASE_HEADERS, CONFIG, TIMEOUT, X_PLEX_CONTAINER_SIZE, log,
-                     logfilter)
+from plexapi import (CONFIG, TIMEOUT, X_PLEX_CONTAINER_SIZE, log,
+                     logfilter, reset_base_headers)
 from plexapi import utils
 from plexapi.alert import AlertListener
 from plexapi.base import PlexObject
@@ -110,6 +110,7 @@ class PlexServer(PlexObject):
         self._myPlexAccount = None   # cached myPlexAccount
         self._systemAccounts = None   # cached list of SystemAccount
         self._systemDevices = None   # cached list of SystemDevice
+        self._base_headers = reset_base_headers()
         data = self.query(self.key, timeout=timeout)
         super(PlexServer, self).__init__(self, data, self.key)
 
@@ -160,7 +161,7 @@ class PlexServer(PlexObject):
 
     def _headers(self, **kwargs):
         """ Returns dict containing base headers for all requests to the server. """
-        headers = BASE_HEADERS.copy()
+        headers = self._base_headers.copy()
         if self._token:
             headers['X-Plex-Token'] = self._token
         headers.update(kwargs)
