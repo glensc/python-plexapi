@@ -6,7 +6,7 @@ from xml.etree import ElementTree
 
 import requests
 from plexapi import (BASE_HEADERS, CONFIG, TIMEOUT, X_PLEX_ENABLE_FAST_CONNECT,
-                     X_PLEX_IDENTIFIER, log, logfilter, utils)
+                     log, logfilter, utils)
 from plexapi.base import PlexObject
 from plexapi.client import PlexClient
 from plexapi.exceptions import BadRequest, NotFound, Unauthorized
