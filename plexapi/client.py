@@ -149,7 +149,7 @@ class PlexClient(PlexObject):
 
     def _headers(self, **kwargs):
         """ Returns a dict of all default headers for Client requests. """
-        headers = self._base_headers
+        headers = self._base_headers.copy()
         if self._token:
             headers['X-Plex-Token'] = self._token
         headers.update(kwargs)
